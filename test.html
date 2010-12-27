@@ -64,10 +64,8 @@
       }
       
       var sc = new SomeClass();
-      console.log( "sc =", sc );
       
       var cc = new ChildClass();
-      console.log( "cc =", cc );
       
       // TESTS
       test( "that public members are externally visible",
@@ -101,7 +99,7 @@
       test( "that protected members are inherited",
         cc.getChildPrivateContext()["protectedProp1"] == "value1" &&
         cc.getChildPrivateContext()["protectedMethod1"] &&
-        typeof( sc.getChildPrivateContext().protectedMethod1 ) == "function" );
+        typeof( cc.getChildPrivateContext().protectedMethod1 ) == "function" );
       
     </script>
   </head>
