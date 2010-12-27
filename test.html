@@ -9,11 +9,10 @@
       // Define a class
       const SomeClass = new Class({
         
-        a: "b",
+        publicProp1: "value1",
         
-        f: function() {
-          console.log("f");
-          console.log("this =", this);
+        publicMethod1: function() {
+          console.log("publicMethod1");
         },
         
         getPrivateContext: function() {
@@ -21,54 +20,88 @@
         },
         
         public: {
-          b: "c",
-          g: function() { console.log("g"); }
+          publicProp2: "value2",
+          publicMethod2: function() { console.log("publicMethod2"); }
+        },
+        
+        protected: {
+          protectedProp1: "value1",
+          protectedMethod1: function() { console.log("protectedMethod1"); },
         },
         
         private: {
-          c: "d",
-          h: function() { console.log("h"); },
-          privateMethod: function() {}
-        }
-        
-      });
-      
-      // Define another class
-      const SomeOtherClass = new Class({
-        
-        d: "e",
-        i: function() { console.log("i"); },
-        
-        public: {
-          e: "f",
-          j: function() { console.log("j"); }
+          privateProp1: "value1",
+          privateMethod1: function() { console.log("privateMethod1"); },
         },
         
-        private: {
-          f: "g",
-          k: function() { console.log("k"); }
+        init: function() {
+          console.log("SomeClass constructor");
         }
-        
       });
       
       // Define a child class
       const ChildClass = new SomeClass.subclass({
         
-        x: "y"
+        childPublicProp1: "value1",
+        childPublicMethod1: function() { console.log("publicMethod1"); },
+        
+        getChildPrivateContext: function() {
+          return this;
+        },
+        
+        init: function() {
+          console.log("ChildClass constructor");
+        }
         
       });
+      
+      function test( desc, val )
+      {
+        if( val == true )
+          console.log( "Test:", desc, "| passed" );
+        else
+          console.log( "Test:", desc, "| FAILED" );
+      }
       
       var sc = new SomeClass();
       console.log( "sc =", sc );
       
-      var soc = new SomeOtherClass();
-      console.log( "soc =", soc );
+      var cc = new ChildClass();
+      console.log( "cc =", cc );
       
-      /*var cc = new ChildClass();
-      console.log( "cc =", cc );*/
+      // TESTS
+      test( "that public members are externally visible",
+        sc["publicProp1"] && sc.publicProp1 == "value1" &&
+        sc["publicProp2"] && sc.publicProp2 == "value2" &&
+        sc["publicMethod1"] && typeof(sc.publicMethod1) == "function" &&
+        sc["publicMethod2"] && typeof(sc.publicMethod2) == "function" );
       
-      console.log( "typeof( sc.getPrivateContext().privateMethod ) == \"function\"",
-                   typeof( sc.getPrivateContext().privateMethod ) == "function" );
+      test( "that protected members are not externally visible",
+        !sc["protectedProp1"] && !sc["protectedMethod2"] );
+      
+      test( "that private members are not externally visible",
+        !sc["privateProp1"] && !sc["privateMethod2"] );
+      
+      test( "that the private instance context has protected members",
+        sc.getPrivateContext()["protectedProp1"] == "value1" &&
+        sc.getPrivateContext()["protectedMethod1"] &&
+        typeof( sc.getPrivateContext().protectedMethod1 ) == "function" );
+      
+      test( "that the private instance context has private members",
+        sc.getPrivateContext()["privateProp1"] == "value1" &&
+        sc.getPrivateContext()["privateMethod1"] &&
+        typeof( sc.getPrivateContext().privateMethod1 ) == "function" );
+      
+      test( "that public members are inherited",
+        cc["publicProp1"] && cc.publicProp1 == "value1" &&
+        cc["publicProp2"] && cc.publicProp2 == "value2" &&
+        cc["publicMethod1"] && typeof(cc.publicMethod1) == "function" &&
+        cc["publicMethod2"] && typeof(cc.publicMethod2) == "function" );
+      
+      test( "that protected members are inherited",
+        cc.getChildPrivateContext()["protectedProp1"] == "value1" &&
+        cc.getChildPrivateContext()["protectedMethod1"] &&
+        typeof( sc.getChildPrivateContext().protectedMethod1 ) == "function" );
       
     </script>
   </head>
