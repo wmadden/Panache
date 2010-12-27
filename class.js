@@ -67,13 +67,13 @@ const Class = function() {
       // Call its constructor, if any
       if( def[CONSTRUCTOR] && typeof(def[CONSTRUCTOR]) == "function" )
         def[CONSTRUCTOR].apply( privateInstanceContext, arguments );
-    }
+    };
     
     // Add the subclass method to the class constructor
     result[SUBCLASS] = function( subclassDef )
     {
       return createSubClass( subclassDef, protectedContext, publicContext );
-    }
+    };
     
     result.prototype = publicContext;
     return result;
