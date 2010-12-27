@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Test class2.js</title>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="class2.js"></script>
+    
+    <script type="text/javascript">
+      // Define a class
+      const SomeClass = new Class({
+        
+        a: "b",
+        
+        f: function() {
+          console.log("f");
+          console.log("this =", this);
+        },
+        
+        getPrivateContext: function() {
+          return this;
+        },
+        
+        pub: {
+          b: "c",
+          g: function() { console.log("g"); }
+        },
+        
+        priv: {
+          c: "d",
+          h: function() { console.log("h"); },
+          privateMethod: function() {}
+        }
+        
+      });
+      
+      // Define another class
+      const SomeOtherClass = new Class({
+        
+        d: "e",
+        i: function() { console.log("i"); },
+        
+        pub: {
+          e: "f",
+          j: function() { console.log("j"); }
+        },
+        
+        priv: {
+          f: "g",
+          k: function() { console.log("k"); }
+        }
+        
+      });
+      
+      // Define a child class
+      const ChildClass = new SomeClass.subclass({
+        
+        x: "y"
+        
+      });
+      
+      var sc = new SomeClass();
+      console.log( "sc =", sc );
+      
+      var soc = new SomeOtherClass();
+      console.log( "soc =", soc );
+      
+      /*var cc = new ChildClass();
+      console.log( "cc =", cc );*/
+      
+      console.log( "typeof( sc.getPrivateContext().privateMethod ) == \"function\"",
+                   typeof( sc.getPrivateContext().privateMethod ) == "function" );
+      
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
