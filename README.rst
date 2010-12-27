@@ -7,7 +7,7 @@ public, private and protected members and full inheritance.
 Quick Intro
 -----------
 
-Classes are defined as follows:
+Classes are defined as follows::
   
   const SomeClass = new Class({
     
@@ -39,7 +39,7 @@ Classes are defined as follows:
  
   var sc = new SomeClass(...);
 
-Subclasses are defined similarly,
+Subclasses are defined similarly::
   
   const ChildClass = new SomeClass.subclass({
     ...
