@@ -55,14 +55,14 @@ Project Goals
 
 The goals of this project are:
 
- * To be able to create traditional classes with simple, concise syntax
- * Public, private, protected members
- * Class-based inheritance
+* To be able to create traditional classes with simple, concise syntax
+* Public, private, protected members
+* Class-based inheritance
 
 Some things it can't do, which may or may not be worthwhile:
 
- * Mixins
- * Interfaces
- * Abstract classes
- * Event dispatching/handling
+* Mixins
+* Interfaces
+* Abstract classes
+* Event dispatching/handling
 
