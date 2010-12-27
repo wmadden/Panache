@@ -1,50 +1,6 @@
 /**
- * Implements the framework used to create classes.
- * 
- * Classes are defined as follows:
- *   
- *   const SomeClass = new Class({
- *     
- *     priv: {
- *       propertyName: initial_value,
- *       methodName: function,
- *       ...
- *     },
- *     
- *     prot: {
- *       propertyName: initial_value,
- *       methodName: function,
- *       ...
- *     },
- *     
- *     pub: {
- *       propertyName: initial_value,
- *       methodName: function,
- *       ...
- *     },
- *     
- *     propertyName: initial_value,
- *     methodName: function,
- *     ...
- *     
- *     init: function,
- *     
- *     events: [
- *       "eventName", ...
- *     ]
- *   });
- *  
- *   var sc = new SomeClass(...);
- * 
- * Subclasses are defined similarly,
- *   
- *   const ChildClass = new SomeClass.subclass({
- *     ...
- *   });
- *   
- * Where the definition is in the same form.
+ * Creates a class, given a class definition.
  */
-
 const Class = function() {
   
   // Pseudo-keywords used in the definition

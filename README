@@ -1,0 +1,47 @@
+
+Panache is a Javascript object-orientation framework. It provides methods to create classes with
+public, private and protected members and full inheritance.
+
+Classes are defined as follows:
+  
+  const SomeClass = new Class({
+    
+    priv: {
+      propertyName: initial_value,
+      methodName: function,
+      ...
+    },
+    
+    prot: {
+      propertyName: initial_value,
+      methodName: function,
+      ...
+    },
+    
+    pub: {
+      propertyName: initial_value,
+      methodName: function,
+      ...
+    },
+    
+    propertyName: initial_value,
+    methodName: function,
+    ...
+    
+    init: function,
+    
+    events: [
+      "eventName", ...
+    ]
+  });
+ 
+  var sc = new SomeClass(...);
+
+Subclasses are defined similarly,
+  
+  const ChildClass = new SomeClass.subclass({
+    ...
+  });
+  
+Where the definition is in the same form as above.
+
