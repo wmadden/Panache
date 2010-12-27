@@ -11,19 +11,19 @@ Classes are defined as follows::
   
   const SomeClass = new Class({
     
-    priv: {
+    private: {
       propertyName: initial_value,
       methodName: function,
       ...
     },
     
-    prot: {
+    protected: {
       propertyName: initial_value,
       methodName: function,
       ...
     },
     
-    pub: {
+    public: {
       propertyName: initial_value,
       methodName: function,
       ...

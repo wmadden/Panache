@@ -4,9 +4,9 @@
 const Class = function() {
   
   // Pseudo-keywords used in the definition
-  const PUBLIC      = "pub";
-  const PROTECTED   = "prot";
-  const PRIVATE     = "priv";
+  const PUBLIC      = "public";
+  const PROTECTED   = "protected";
+  const PRIVATE     = "private";
   const CONSTRUCTOR = "init";
   const EVENTS      = "events";
   const SUBCLASS    = "subclass";
