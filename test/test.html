@@ -115,6 +115,11 @@
           
           test( "that the parent constructor is available on the child",
             false );
+          
+          test( "that mixed-in public members are available on the target", false );
+          test( "that mixed-in protected members are available on the target", false );
+          test( "that mixed-in private members are available on the target", false );
+          
         }
         
         // ---------------------------------------------------------------------------------------

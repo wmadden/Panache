@@ -10,7 +10,8 @@ const Class = function() {
   const CONSTRUCTOR = "init";
   const EVENTS      = "events";
   const SUBCLASS    = "subclass";
-  const KEYWORDS    = [ PUBLIC, PROTECTED, PRIVATE, CONSTRUCTOR, EVENTS, SUBCLASS ];
+  const MIXIN       = "mixin";
+  const KEYWORDS    = [ PUBLIC, PROTECTED, PRIVATE, CONSTRUCTOR, EVENTS, SUBCLASS, MIXIN ];
   
   /**
    * Creates a class from a definition.
@@ -75,8 +76,19 @@ const Class = function() {
       return createSubClass( subclassDef, protectedContext, publicContext );
     };
     
+    // Add the mixin method to the class constructor
+    result[MIXIN] = function( mixinDef )
+    {
+      return mixin( mixinDef, privateContext, protectedContext, publicContext );
+    }
+    
     result.prototype = publicContext;
     return result;
+  }
+  
+  function mixin( def, privateContext, protectedContext, publicContext )
+  {
+    // TODO
   }
   
   /**
