@@ -38,9 +38,9 @@ const Class = function() {
       publicContext = {};
     
     // Create objects for the different context levels of the class
-    var privateContext    = createContext( PRIVATE, def );
-    var protectedContext  = createContext( PROTECTED, def, protectedContext );
     var publicContext     = createContext( PUBLIC, def, publicContext );
+    var protectedContext  = createContext( PROTECTED, def, protectedContext );
+    var privateContext    = createContext( PRIVATE, def, Utils.newProto(protectedContext) );
     
     // Interpret root-level properties and methods as public
     for( var property in def )
