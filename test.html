@@ -101,6 +101,15 @@
         cc.getChildPrivateContext()["protectedMethod1"] &&
         typeof( cc.getChildPrivateContext().protectedMethod1 ) == "function" );
       
+      test( "that overridden public parent methods are available on the child",
+        false );
+      
+      test( "that overridden protected parent methods are available on the child",
+        false );
+      
+      test( "that the parent constructor is available on the child",
+        false );
+      
     </script>
   </head>
   <body>
