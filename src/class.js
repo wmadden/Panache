@@ -60,7 +60,7 @@ const Class = function() {
       if( !(this instanceof result) )
         throw( "'this' is not derived from the class prototype, did you forget the new keyword?" );
       
-      // Create a private instance context
+      // Create a private instance context whose prototype is 'this' (i.e. the public context)
       var privateInstanceContext = Utils.clone( privateContext, this );
       
       applyMethodContext( this, privateInstanceContext );
